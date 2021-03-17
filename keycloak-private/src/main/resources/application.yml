@@ -1,0 +1,10 @@
+keycloak:
+  auth-server-url: ${KEYCLOAK_URL:http://localhost:8080/auth}
+  realm: PRIVATE
+  resource: private-client
+  public-client: false
+  credentials:
+    secret: '4dfe11cf-6fbb-46c0-8846-0ecc62628333'
+  bearer-only: true
+server:
+  port: 8090
