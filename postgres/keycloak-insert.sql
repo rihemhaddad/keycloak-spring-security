@@ -3556,16 +3556,16 @@ INSERT INTO public.migration_model VALUES ('pilna', '12.0.4', 1615297538);
 -- Data for Name: policy_config; Type: TABLE DATA; Schema: public; Owner: keycloak
 --
 
-INSERT INTO public.policy_config VALUES ('7648380b-8d5f-4be4-8e38-3b6bbb5c1357', 'code', '// by default, grants any permission associated with this policy
-$evaluation.grant();
+INSERT INTO public.policy_config VALUES ('7648380b-8d5f-4be4-8e38-3b6bbb5c1357', 'code', '// by default, grants any permission associated with this policy
+$evaluation.grant();
 ');
 INSERT INTO public.policy_config VALUES ('55ce25a3-4655-46ea-8790-1968de43c309', 'defaultResourceType', 'urn:private-client:resources:default');
-INSERT INTO public.policy_config VALUES ('0f3e6cab-2f44-4dd8-89cb-5b9b4c5945dc', 'code', '// by default, grants any permission associated with this policy
-$evaluation.grant();
+INSERT INTO public.policy_config VALUES ('0f3e6cab-2f44-4dd8-89cb-5b9b4c5945dc', 'code', '// by default, grants any permission associated with this policy
+$evaluation.grant();
 ');
 INSERT INTO public.policy_config VALUES ('ad64bd4c-c875-42e5-934a-c2047a6b1cbd', 'defaultResourceType', 'urn:multiple-1-client:resources:default');
-INSERT INTO public.policy_config VALUES ('6b192cd8-a7ab-4f00-ae63-6872a7d9672e', 'code', '// by default, grants any permission associated with this policy
-$evaluation.grant();
+INSERT INTO public.policy_config VALUES ('6b192cd8-a7ab-4f00-ae63-6872a7d9672e', 'code', '// by default, grants any permission associated with this policy
+$evaluation.grant();
 ');
 INSERT INTO public.policy_config VALUES ('1df07291-6f76-4912-b537-57b6101794f5', 'defaultResourceType', 'urn:multiple-2-client:resources:default');
 
@@ -5082,6 +5082,32 @@ INSERT INTO public.user_role_mapping VALUES ('603d02e8-11c0-40fc-a29f-ce0768218e
 INSERT INTO public.user_role_mapping VALUES ('06399664-99af-42e6-9504-ab3ff4e61184', 'f1b286f3-f987-4238-84bd-63bbf41b33e7');
 INSERT INTO public.user_role_mapping VALUES ('ba49cc6b-a283-4227-8ab4-2ea356cc16fb', 'f1b286f3-f987-4238-84bd-63bbf41b33e7');
 INSERT INTO public.user_role_mapping VALUES ('86009589-4589-4207-84d3-21ed456de9a3', 'f1b286f3-f987-4238-84bd-63bbf41b33e7');
+INSERT INTO public.user_role_mapping VALUES ('1db804bc-007b-493b-9ed8-091d047ecc39', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('ed16fed3-2c5f-4c43-b1a5-06300a0b7f3a', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('796408c9-759e-4371-981c-b5546a42d22b', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('c2f675e3-f3af-4c0d-9c82-1d111b03be1e', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('cd9dd234-bcfe-4416-98ea-c3a7183f838f', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('43501532-c622-4703-a660-f765c93c6ebd', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('71613923-f03c-4ad6-9ec2-041af63ae8f5', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('3cc090f4-b164-4ab6-acbe-5b729a3dc48c', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('0fe82f29-7ac0-400e-a4c8-93e21269bfa6', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('1a66e556-e883-4bc0-9f0a-586997d42fdd', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('90783c0f-f077-40ea-a32c-761084c8cc0b', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('42c1fde8-8f55-475a-a19c-51be3bef41ab', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('55d49da6-c757-4190-beb6-40aa877df5e7', '5d830a22-4d1c-4901-aa54-550df5ac7e04');
+INSERT INTO public.user_role_mapping VALUES ('dd2f03f3-ad0a-41aa-8215-a071c45ac7c2', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('028a6355-28b0-4983-83e1-f76ef4f33b3b', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('5d64f8f8-2c7a-4b1f-a674-0a1693aea3df', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('a0c349b8-c843-471b-984a-fcab1b01b40b', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('3191c199-f1d9-4910-af3b-cc170c4b9d48', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('433370c9-7279-43fb-bba2-3626b49c4b3a', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('9fbebf96-a65b-4494-9818-892d6c40ab45', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('0108c7d9-4252-4c37-8926-3fdf9b1c4ee6', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('f2230d88-b1be-48c8-b620-4b4e4f6ef88f', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('b332b59d-d40a-4e37-82e8-a91fdeef4fe1', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('78c4152e-eefb-4ae6-9498-3ffe6591465a', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('eff0d7bf-7968-4681-87da-d967f57304a6', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
+INSERT INTO public.user_role_mapping VALUES ('d586327a-c1ae-4d65-9725-7eafbbfcce25', 'd7b34026-db0a-45fc-98dd-2b0092c047ba');
 
 
 --

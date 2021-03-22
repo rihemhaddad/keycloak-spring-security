@@ -8,7 +8,7 @@ Toutes les données sur les REALM sont stockés dans cette image postgres
 Utilisé dans le cadre de keycloak-private
 
 La configuration spécifique est la suivante :
-* Client 'private-client' est de type confidential
+* Client 'private-client' est de type confidential avec tous les droits sur le REALM
 
 Utilisateurs pour ce realm :
 * jco / password
@@ -35,7 +35,7 @@ Utilisé dans le cadre de keycloak-multi-realm
 _Nb: Pour cette partie, X correspond au numéro du realm (1 pour MULTIPLE-1)_
 
 La configuration spécifique est la suivante :
-* Client 'multiple-X-client' est de type private
+* Client 'multiple-X-client' est de type private avec tous les droits sur le realm respectif
 
 Utilisateurs pour chaque realm :
 * multiple-X-1 / password
