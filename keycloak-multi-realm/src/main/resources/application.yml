@@ -1,0 +1,15 @@
+keycloak:
+  auth-server-url: ${KEYCLOAK_URL:http://localhost:8080/auth}
+  realm: MULTIPLE-1
+  resource: multiple-1-client
+  public-client: false
+  credentials:
+    secret: 'f78cfd72-0354-487c-94cc-0611a0a12889'
+  bearer-only: true
+  ssl-required: 'NONE'
+custom:
+  map-realm-secret:
+    MULTIPLE-1: 'f78cfd72-0354-487c-94cc-0611a0a12889'
+    MULTIPLE-2: '018790e4-6e29-4e01-9c1b-8e0b6bf5d77c'
+server:
+  port: 8090
