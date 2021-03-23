@@ -79,9 +79,9 @@ public class UserController {
 	public ResponseEntity<UserRepresentation> updatePassword(@RequestParam String password) {
 		final String username = ((SimpleKeycloakAccount) SecurityContextHolder.getContext().getAuthentication().getDetails()).getKeycloakSecurityContext().getToken().getPreferredUsername();
 		final String clientId = ((SimpleKeycloakAccount) SecurityContextHolder.getContext().getAuthentication().getDetails()).getKeycloakSecurityContext().getToken().getIssuedFor();
-
-		try (Keycloak kc = this.keycloakAsAdmin(CustomRealmProperties.convertClientToRealm(clientId))) {
-			final UsersResource resource = kc.realm(this.properties.getRealm()).users();
+		final String realm = CustomRealmProperties.convertClientToRealm(clientId);
+		try (Keycloak kc = this.keycloakAsAdmin(realm)) {
+			final UsersResource resource = kc.realm(realm).users();
 			final UserRepresentation user = getUserRepresentation(username, resource);
 			final CredentialRepresentation credential = new CredentialRepresentation();
 			credential.setValue(password);
@@ -96,12 +96,14 @@ public class UserController {
 	@PostMapping("/refresh")
 	@PreAuthorize("isAuthenticated()")
 	public AccessTokenResponse refreshToken(@RequestParam String refreshToken) {
+		final String clientId = ((SimpleKeycloakAccount) SecurityContextHolder.getContext().getAuthentication().getDetails()).getKeycloakSecurityContext().getToken().getIssuedFor();
+		final String realm = CustomRealmProperties.convertClientToRealm(clientId);
 		Map<String, String> credentialsMap = new HashMap<>();
 		credentialsMap.put(OAuth2Constants.REFRESH_TOKEN, refreshToken);
-		credentialsMap.put(OAuth2Constants.CLIENT_ID, this.properties.getResource());
-		credentialsMap.put(OAuth2Constants.CLIENT_SECRET, String.valueOf(this.properties.getCredentials().get("secret")));
+		credentialsMap.put(OAuth2Constants.CLIENT_ID, clientId);
+		credentialsMap.put(OAuth2Constants.CLIENT_SECRET, this.getSecret(realm));
 		credentialsMap.put(OAuth2Constants.GRANT_TYPE, OAuth2Constants.REFRESH_TOKEN);
-		return this.keycloakClient.getToken(this.properties.getRealm(), credentialsMap);
+		return this.keycloakClient.getToken(realm, credentialsMap);
 
 	}
 

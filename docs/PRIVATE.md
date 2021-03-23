@@ -5,29 +5,32 @@
 L'objectif de cet exercice est d'utiliser un REALM Keycloak en ayant un client de type "SUPER-ADMIN".
 Ce client aura tous les droits sur le REALM et pourra faire toutes les actions nécéssaires sur les utilisateurs de ce REALM.
 
-**Cette solution est à utiliser uniquement depuis votre BACK-END**. 
+**Cette solution est à utiliser uniquement depuis votre BACK-END**.
 Il ne faut pas utiliser ce client Keycloak depuis le FRONT-END, cela donnerait tous les droits sur votre Keycloak à un utilisateur mal-intentionné avec les informations disponibles (clientId, clientSecret)
+
+Pour les API créés, nous utiliserons des @RequestParam pour nous simplifier la vie dans ce coding dojo. 
+Attention, pour vos projets de PROD, il est interdit de refaire la même chose !!! Une URL peut être loggé par un nginx, un ha proxy etc... donnant accès aux queryParams de la requête. Veillez à adapter les signatures pour faire passer toutes ces informations dans des @RequestBody
 
 ## Etapes de réalisation
 
-Pour présenter cette solution, nous procéderons par étape : 
+Pour présenter cette solution, nous procéderons par étape :
 1. Mise en place de la configuration Spring
 2. GET /user
 3. POST /user
 4. PUT /user
 5. POST /user/refresh
 
-Mise à part pour la première étape, nous fonctionnerons en Test-Driven Development (TDD). 
+Mise à part pour la première étape, nous fonctionnerons en Test-Driven Development (TDD).
 Les tests vous sont fournis et vous devrez respecter la signature des API proposées.
 
-_NB :Le service propose de base une page /index.html qui vous permet de tester les API_ 
+_NB :Le service propose de base une page /index.html qui vous permet de tester les API_
 
 ## Setup configuration
 
 Avant de développer des API sécurisés grâce à Keycloak, il faut mettre en place la configuration de sécurité.
 Pour cela nous vous conseillons de jeter un oeil à : [6.2 Configuration Class uniquement](https://www.baeldung.com/spring-boot-keycloak#securityconfig)
 
-En quelques mots sur les différentes classes utilisées : 
+En quelques mots sur les différentes classes utilisées :
 * KeycloakWebSecurityConfigurerAdapter : Classe qu'on étant pour créer un WebSecurityConfigurer sécurisé par Keycloak (créé les filtres nécéssaires, la config du http etc ...).
 * KeycloakAuthenticationProvider : Performs authentication on a KeycloakAuthenticationToken
 * KeycloakSpringBootConfigResolver : Définit la manière dont chaque requête va permettre de construire un object pour communiquer avec keycloak (KeycloakDeployment, en lien avec AdapterConfig / KeycloakSpringBootProperties de base les properties que vous mettez dans keycloak.*)
@@ -45,20 +48,20 @@ Récupérer cette classe dans votre projet spring mis à votre disposition.
 
 Pour requêter Keycloak, nous vous montrons deux solutions :
 * OpenFeign : Vous définissez votre client Feign avec les différentes signatures d'API à utiliser (OpenFeign est un builder de requête, le RestTemplate de spring s'occupe d'executer les requêtes ensuite)
-  * (+) Plus simple d'utilisation
-  * (-) Suivre les montées de version keycloak pour voir les potentiels changement de signature des API
-  
+    * (+) Plus simple d'utilisation
+    * (-) Suivre les montées de version keycloak pour voir les potentiels changement de signature des API
+
 * KeycloakAdmin : Client JAVA exposé par Keycloak pour requêter les différentes API pour une release donnée
-  * (+) Pas de problème de signature car la version est liée à une release donnée de Keycloak
-  * (-) Utilisation d'un client HTTP différent de celui de Spring (RestEasyClient si < 3.7, probleme de finalize en JVM)  
-    
-    
+    * (+) Pas de problème de signature car la version est liée à une release donnée de Keycloak
+    * (-) Utilisation d'un client HTTP différent de celui de Spring (RestEasyClient si < 3.7, probleme de finalize en JVM)
+
+
 **Exercice:**
 1. Trouver l'API permettant de générer des tokens et les informations nécéssaires à envoyer à cette API. Pour vous aider : `curl -http://localhost:8080/auth/realms/PRIVATE/.well-known/openid-configuration`
 2. Compléter le KeycloakClient.java pour ajouter l'API permettant de récupérer un token
 3. Compléter le UserController.login pour permettre à un utilisateur de récupérer un AccessTokenResponse
 
-Pour valider votre 3ème étape: 
+Pour valider votre 3ème étape:
 * Lancer l'appli et tester avec un des utilisateurs existants
 * Lancer uniquement le test shouldLogin
 
@@ -82,7 +85,7 @@ En effet, les REALM permettent d'avoir des roles par défault à la création. N
 Docs :
 * https://javadoc.io/doc/org.keycloak/keycloak-admin-client/latest/index.html
 
-Test associé: 
+Test associé:
 * shouldCreate
 
 ## PUT /user
@@ -96,7 +99,7 @@ Nous vous conseillons d'utiliser le mode DEBUG de votre IDE & la page index.html
 
 Reflection : Sur l'un de vos projets, comment feriez-vous pour verifier un ancien mot de passe ?
 
-Tests associés : 
+Tests associés :
 * shouldUpdatePassword
 * shouldDenyApi
 
@@ -106,7 +109,7 @@ Tests associés :
 Cette API permet de mettre à jour un token d'accès avant expiration.
 De base l'AccessTokenResponse contient :
 * access_token qui représente votre JWT
-* refresh_token qui permet de générer un nouveau JWT 
+* refresh_token qui permet de générer un nouveau JWT
 
 **Exercice:**
 1. Réutiliser votre API Feign créée pour la connexion, pour raffraichir un token
