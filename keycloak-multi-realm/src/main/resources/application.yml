@@ -1,10 +1,10 @@
 keycloak:
   auth-server-url: ${KEYCLOAK_URL:http://localhost:8080/auth}
-  realm: MULTIPLE-1
-  resource: multiple-1-client
+  realm: FAKE-REALM # Pas nécéssaire, juste pour des fallbacks
+  resource: FAKE-CLIENT
   public-client: false
   credentials:
-    secret: 'f78cfd72-0354-487c-94cc-0611a0a12889'
+    secret: 'FAKE-SECRET'
   bearer-only: true
   ssl-required: 'NONE'
 custom:
