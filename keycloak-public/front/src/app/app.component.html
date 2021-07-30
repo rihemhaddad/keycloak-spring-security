@@ -1,0 +1,9 @@
+<h1><a routerLink="/" routerLinkActive="active">Client publique keycloak</a></h1>
+<button id='btn-logout' class="btn btn-outline-warning my-2 my-sm-0" (click)="keycloakService.logout()">Déconnexion</button>
+<nav>
+  <ul>
+    <li><a id='admin'  routerLink="/admin" routerLinkActive="active">Admin</a></li>
+    <li><a id='producer' routerLink="/producteur" routerLinkActive="active">Producteur</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
